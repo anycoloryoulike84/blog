@@ -6,15 +6,19 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { BlogComponent } from './blog/blog/blog.component';
+import { PostDetailComponent } from './blog/post-detail/post-detail.component';
 import { HomeComponent } from './home/home.component';
 import { RouterModule, Routes } from '@angular/router';
+
+
 
 
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'blog', component: BlogComponent }
+  { path: 'blog', component: BlogComponent },
+  { path: 'blog/:id', component: PostDetailComponent }
 ];
 
 
@@ -22,7 +26,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     BlogComponent,
-    HomeComponent
+    HomeComponent,
+    PostDetailComponent
   ],
   imports: [
     BrowserModule,

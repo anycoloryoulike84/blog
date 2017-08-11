@@ -14,7 +14,11 @@ export class BlogComponent implements OnInit {
 	title: string = "BLOG!";
 	posts: Post[] = [];
 
-  constructor(private postService: PostService) { }
+  constructor(
+    
+    private postService: PostService
+
+    ) { }
 
   ngOnInit() {
 
