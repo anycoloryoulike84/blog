@@ -1,6 +1,11 @@
 {
   "db": {
+    "host": "ds135382.mlab.com",
+    "port": 35382,
+    "database": "lb-blog-sample",
+    "password": "orc12345",
     "name": "db",
-    "connector": "memory"
+    "connector": "mongodb",
+    "user": "ggriffin84"
   }
 }

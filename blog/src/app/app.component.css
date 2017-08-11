@@ -1,0 +1,11 @@
+
+
+.container .jumbotron {
+	background: #ccc url(https://static.pexels.com/photos/187919/pexels-photo-187919.jpeg) center center;
+
+}
+.container {
+  margin: 0 auto;
+  width: 100%;
+}
+
