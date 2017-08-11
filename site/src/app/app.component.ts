@@ -35,6 +35,10 @@ ngOnInit() {
   	}, err => {
   		console.log(err)
   	})
+
+
+
+
   	
   	this.route.params.switchMap((params:Params) => {
 
