@@ -1,5 +1,6 @@
 <blockquote>
+	<h3>{{post.title}}</h3>
   <p>{{post.body}}</p>
-  <footer>{{post.name}} <cite title="{{post.title}}">{{post.title}}</cite></footer>
+  <footer>{{post.author}}  <cite title="{{post.title}}">{{post.date | date:"short"}}</cite></footer>
 </blockquote>
 
