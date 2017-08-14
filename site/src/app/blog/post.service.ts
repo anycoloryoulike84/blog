@@ -6,9 +6,13 @@ import {Post} from './blog/post';
 
 
 @Injectable()
+
 export class PostService {
 
-  constructor(private http: Http) { }
+ 
+
+  constructor(private http: Http) { 
+  }
 
 	headers = new Headers({
  	 	
@@ -20,7 +24,7 @@ export class PostService {
   	getPosts(): Observable<Post[]>{
   		
   		let url = "http://0.0.0.0:3000/api/posts";
-  		return this.http.get(url, {headers: this.headers}).map(res => res.json() ).catch(err => {
+  		return this.http.get(url, {headers: this.headers}).map( res => res.json() ).catch(err => {
   			
   			return Observable.throw(err)
   		
@@ -40,4 +44,21 @@ export class PostService {
   	}
 
 
+
+    createPost(post: Post): Observable<any> {
+
+      let url = "http://0.0.0.0:3000/api/posts";
+      return this.http.post(url, post, { headers: this.headers}).map( res => res.json() ).catch(err => {
+        
+        return Observable.throw(err);
+
+      })
+
+    }
+
+
+
 }
+
+
+ 

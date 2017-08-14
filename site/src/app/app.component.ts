@@ -12,14 +12,14 @@ import {Post} from './blog/blog/post';
 
 export class AppComponent implements OnInit {
 
-title: string = 'CNA Database';
-   description: string = 'CNA Replica Set Test Site for example';
+  title: string = 'CNA Database';
+  description: string = 'CNA Replica Set Test Site for example';
 	posts: Post[] = [];
 	post: Post = new Post();
 
   constructor(
     
-      	private route: ActivatedRoute,
+    private route: ActivatedRoute,
   	protected postService: PostService
 
     ) { }
