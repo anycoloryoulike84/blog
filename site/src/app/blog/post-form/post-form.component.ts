@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Post} from '../blog/post';
 import {PostService} from '../post.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 
 
@@ -16,24 +16,62 @@ export class PostFormComponent implements OnInit {
 
 	post: Post = new Post();
 	errorMessage = "";
+	loading = false;
 
 
 
   constructor(
 
   	  	private postService: PostService,
-  	  	private router: Router
+  	  	private router: Router,
+  	  	private route: ActivatedRoute ) { 
 
-  	) { 
   }
 
   ngOnInit() {
 
+  	this.route.params.switchMap((params: Params) => {
+	    
+	    let id = params['id'];
+
+  		if (typeof params['id'] !== "undefined" && params['id'] !== null) {
+ 	      	
+ 	      this.loading = true;
+ 	      return this.postService.getPost(id); 
+ 
+  		}
+
+  	}).subscribe(res => {
+
+  		 this.loading = false;
+  		 this.post = res as Post;
+
+  	}, err => {
+		console.log(err);
+  	})
 
   }
 
 
   onSubmit() {
+
+  	//  if post.id is not null we must update the post, else create new post
+
+  	if (this.post.id) {
+
+  		this.postService.updatePost(this.post).subscribe(res => {
+		this.router.navigate(['/blog', this.post.id])
+
+  		}, err => {
+
+  				console.log(err)
+  				this.errorMessage = "Error in saving the post"
+  		})
+
+  	} else {
+
+  	}
+
   	console.log(this.post);
   	//  Let do post this data to rest API service
 

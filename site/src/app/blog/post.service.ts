@@ -57,6 +57,17 @@ export class PostService {
     }
 
 
+        updatePost(post: Post): Observable<any> {
+
+      let url = "http://0.0.0.0:3000/api/posts/" + post.id;
+      return this.http.put(url, post, { headers: this.headers}).map( res => res.json() ).catch(err => {
+        return Observable.throw(err);
+
+      })
+
+    }
+
+
 
 }
 

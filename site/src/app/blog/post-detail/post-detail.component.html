@@ -1,3 +1,12 @@
+<div class="tab-actions">
+	<ul class="nav nav-tabs">
+	  <li *ngIf="post.id"><a routerLink="/blog/{{post.id}}">View</a></li>
+	  <li *ngIf="post.id"><a class="active" routerLink="/blog/{{post.id}}/edit">Edit</a></li>
+	  <li *ngIf="post.body"><a routerLink="/blog/{{post.id}}/delete">Delete</a></li>
+	  <li *ngIf="!post.id"><a routerLink="/blog-add">Create New Post</a></li>
+	</ul>
+</div>
+
 <blockquote>
 	<h3>{{post.title}}</h3>
   <p>{{post.body}}</p>

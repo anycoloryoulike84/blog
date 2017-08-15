@@ -17,6 +17,7 @@ const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'blog', component: BlogComponent },
   { path: 'blog/:id', component: PostDetailComponent },
+  { path: 'blog/:id/edit', component: PostFormComponent },
   { path: 'blog-add', component: PostFormComponent }
 ];
 
