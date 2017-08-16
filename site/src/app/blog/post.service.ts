@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import {Http, Headers} from '@angular/http';
 import {Observable} from 'rxjs';
 import {Post} from './blog/post';
+import {isNull} from 'util';
+
 
 
 
@@ -21,9 +23,17 @@ export class PostService {
 	 });
 
 
-  	getPosts(): Observable<Post[]>{
+  	getPosts(filter: string): Observable<Post[]> {
   		
-  		let url = "http://0.0.0.0:3000/api/posts";
+  		 let url = "http://0.0.0.0:3000/api/posts";
+
+      if (!isNull(filter) && filter !== "") {
+
+         url = url + "?filter=" + filter;
+
+      }
+
+
   		return this.http.get(url, {headers: this.headers}).map( res => res.json() ).catch(err => {
   			
   			return Observable.throw(err)

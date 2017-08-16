@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import {PostService} from './blog/post.service';
 import {Post} from './blog/blog/post';
+import {isNullOrUndefined} from "util";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-    providers: [PostService]
+  providers: [PostService]
 })
 
 export class AppComponent implements OnInit {
@@ -17,6 +18,17 @@ export class AppComponent implements OnInit {
 	posts: Post[] = [];
 	post: Post = new Post();
 
+  pager = {
+    limit: 2,
+    current: 0, 
+    reachedEnd: false,
+  };
+
+  query = {
+      limit: this.pager.limit,
+      skip: this.pager.limit * this.pager.current
+  };
+
   constructor(
     
     private route: ActivatedRoute,
@@ -24,31 +36,14 @@ export class AppComponent implements OnInit {
 
     ) { }
 
-ngOnInit() {
-
-
-  	this.postService.getPosts().subscribe(res => {
-
-  		this.posts = res as Post[];
-		console.log(res);
-
-  	}, err => {
-  		console.log(err)
-  	})
+  ngOnInit() {
 
 
 
-
-  	
-  	this.route.params.switchMap((params:Params) => {
-
-  		let id = params['id'];
-  		return this.postService.getPost(id);
-  	}).subscribe(response => {	
-  		this.post = response;
-  	}, err => {
-  		console.log(err);
-  	});  
   }
+
+
+
+
 
 }

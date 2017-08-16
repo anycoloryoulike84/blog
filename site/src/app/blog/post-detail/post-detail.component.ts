@@ -4,6 +4,8 @@ import {PostService} from '../post.service';
 import {Post} from '../blog/post';
 
 
+
+
 @Component({
   selector: 'app-post-detail',
   templateUrl: './post-detail.component.html',
@@ -18,7 +20,6 @@ export class PostDetailComponent implements OnInit {
 
   	private route: ActivatedRoute,
   	protected postService: PostService
-
 
   	) { }
 
