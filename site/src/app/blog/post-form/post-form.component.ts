@@ -30,25 +30,33 @@ export class PostFormComponent implements OnInit {
 
   ngOnInit() {
 
-  	this.route.params.switchMap((params: Params) => {
-	    
-	    let id = params['id'];
+    if(this.route.snapshot.params['id']){
 
-  		if (typeof params['id'] !== "undefined" && params['id'] !== null) {
- 	      	
- 	      this.loading = true;
- 	      return this.postService.getPost(id); 
+
+    this.route.params.switchMap((params: Params) => {
+      
+      let id = params['id'];
+
+      if (typeof params['id'] !== "undefined" && params['id'] !== null) {
+           
+         this.loading = true;
+         return this.postService.getPost(id); 
  
-  		}
+      }
 
-  	}).subscribe(res => {
+    }).subscribe(res => {
 
-  		 this.loading = false;
-  		 this.post = res as Post;
+       this.loading = false;
+       this.post = res as Post;
 
-  	}, err => {
-		console.log(err);
-  	})
+    }, err => {
+    console.log(err);
+      
+      });
+
+
+
+    }
 
   }
 
