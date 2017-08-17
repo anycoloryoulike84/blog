@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Post} from '../blog/post';
 import {PostService} from '../post.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-
+import {Observable} from "rxjs";
 
 
 @Component({

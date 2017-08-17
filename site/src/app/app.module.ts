@@ -10,6 +10,9 @@ import { PostDetailComponent } from './blog/post-detail/post-detail.component';
 import { HomeComponent } from './home/home.component';
 import { RouterModule, Routes } from '@angular/router';
 import { PostFormComponent } from './blog/post-form/post-form.component';
+import { LoginComponent } from './user/login/login.component';
+import { AuthService } from './user/auth.service';
+import { ProfileComponent } from './user/profile/profile.component';
 
 
 const appRoutes: Routes = [
@@ -18,7 +21,10 @@ const appRoutes: Routes = [
   { path: 'blog', component: BlogComponent },
   { path: 'blog/:id', component: PostDetailComponent },
   { path: 'blog/:id/edit', component: PostFormComponent },
-  { path: 'blog-add', component: PostFormComponent }
+  { path: 'blog-add', component: PostFormComponent },
+  { path: 'user/login', component: LoginComponent },
+  { path: 'user/my-account', component: ProfileComponent }
+  
 ];
 
 
@@ -28,7 +34,9 @@ const appRoutes: Routes = [
     BlogComponent,
     HomeComponent,
     PostDetailComponent,
-    PostFormComponent
+    PostFormComponent,
+    LoginComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +44,7 @@ const appRoutes: Routes = [
     HttpModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { 

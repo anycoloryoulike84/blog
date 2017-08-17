@@ -3,7 +3,7 @@ import {Http, Headers} from '@angular/http';
 import {Observable} from 'rxjs';
 import {Post} from './blog/post';
 import {isNull} from 'util';
-
+import {AuthService} from '../user/auth.service';
 
 
 
@@ -13,12 +13,18 @@ export class PostService {
 
  
 
-  constructor(private http: Http) { 
-  }
+  constructor(
+
+    private http: Http,
+    private authService: AuthService
+
+
+    ) { }
 
 	headers = new Headers({
  	 	
  	 	'Content-Type': 'application/json',
+    'Authorization': this.authService.getToken()
 		
 	 });
 
