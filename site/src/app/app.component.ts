@@ -3,12 +3,16 @@ import { ActivatedRoute, Params } from '@angular/router';
 import {PostService} from './blog/post.service';
 import {Post} from './blog/blog/post';
 import {isNullOrUndefined} from "util";
+import {User} from './user/user';
+import {AuthService} from './user/auth.service';
+import {UserService} from './user/user.service';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [PostService]
+  providers: [PostService]   
 })
 
 export class AppComponent implements OnInit {
@@ -17,6 +21,8 @@ export class AppComponent implements OnInit {
   description: string = 'CNA Replica Set Test Site for example';
 	posts: Post[] = [];
 	post: Post = new Post();
+  user: User = new User();
+  loggedIn: boolean = false;
 
   pager = {
     limit: 2,
@@ -32,16 +38,38 @@ export class AppComponent implements OnInit {
   constructor(
     
     private route: ActivatedRoute,
-  	protected postService: PostService
+  	protected postService: PostService,
+    private authService: AuthService,
+    private userService: UserService
 
-    ) { }
+    ) {
 
-  ngOnInit() {
+      this.user = this.authService.getCurrentUser();
+
+      if (this.user && !isNullOrUndefined(this.user)) {
+
+        this.loggedIn = true;
+
+      }
+
+
+     }
+
+      ngOnInit() {
 
 
 
-  }
+      }
 
+
+      logout() {
+          // request logout to server api
+          this.loggedIn = false;
+          this.userService.logout();
+          this.authService.logout();
+
+
+      }
 
 
 

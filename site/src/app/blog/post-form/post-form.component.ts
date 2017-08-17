@@ -16,8 +16,8 @@ export class PostFormComponent implements OnInit {
 
 	post: Post = new Post();
 	errorMessage = "";
+  successMessage = "";
 	loading = false;
-
 
 
   constructor(
@@ -68,12 +68,14 @@ export class PostFormComponent implements OnInit {
   	if (this.post.id) {
 
   		this.postService.updatePost(this.post).subscribe(res => {
-		this.router.navigate(['/blog', this.post.id])
+		  this.router.navigate(['/blog', this.post.id]);
+      this.successMessage = "Blog Post Submitted"
 
   		}, err => {
 
   				console.log(err)
   				this.errorMessage = "Error in saving the post"
+          this.successMessage = "Blog Post Submitted"
   		})
 
   	} else {
@@ -95,6 +97,7 @@ export class PostFormComponent implements OnInit {
   	}, err => {
   		console.log(err);
   		this.errorMessage = "An error occured in saving the post";
+      this.successMessage = "Blog Post Submitted";
   	})
 
   }

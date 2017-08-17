@@ -9,7 +9,9 @@ export class AuthService {
 
 
 
-  constructor() { }
+  constructor(
+
+    ) { }
 
 
 
@@ -27,7 +29,7 @@ export class AuthService {
   			let user: User = JSON.parse(userString);
   			return user;
   		} else {
-  			return null
+  			return null;
   		}
 
   	}
@@ -39,11 +41,18 @@ export class AuthService {
   	}
 
   	getToken(): string {
-
   		return localStorage.getItem("accessToken");
 
   	}
 
+
+      logout() {
+          // request logout to server api
+          
+          localStorage.removeItem("currentUser");
+          localStorage.removeItem("accessToken");
+
+      }
 
 
 }

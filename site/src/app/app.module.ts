@@ -12,6 +12,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PostFormComponent } from './blog/post-form/post-form.component';
 import { LoginComponent } from './user/login/login.component';
 import { AuthService } from './user/auth.service';
+import { UserService } from './user/user.service';
 import { ProfileComponent } from './user/profile/profile.component';
 
 
@@ -44,7 +45,7 @@ const appRoutes: Routes = [
     HttpModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [AuthService],
+  providers: [AuthService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { 
