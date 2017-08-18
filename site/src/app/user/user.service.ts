@@ -29,7 +29,7 @@ export class UserService {
 
 login(username:string,password:string): Observable<any>{
 
-	let url = "http://0.0.0.0:3000/api/Users/login?include=user";
+	let url = "http://0.0.0.0:3000/api/accounts/login?include=user";
 
 		return this.http.post(url, {
 			username:username, 
@@ -48,7 +48,7 @@ login(username:string,password:string): Observable<any>{
 
 	logout(): Observable<any>{
 
-		let url = "http://0.0.0.0:3000/api/Users/logout";
+		let url = "http://0.0.0.0:3000/api/accounts/logout";
 		return this.http.post(url, {
 			accessTokenID: this.authService.getToken()
 		 }, {

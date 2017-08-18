@@ -26,7 +26,7 @@
     {
       "accessType": "*",
       "principalType": "ROLE",
-      "principalId": "admin",
+      "principalId": "administrator",
       "permission": "ALLOW"
     },
     {

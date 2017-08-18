@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import {PostService} from './blog/post.service';
 import {Post} from './blog/blog/post';
 import {isNullOrUndefined} from "util";
@@ -40,7 +40,8 @@ export class AppComponent implements OnInit {
     private route: ActivatedRoute,
   	protected postService: PostService,
     private authService: AuthService,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
 
     ) {
 

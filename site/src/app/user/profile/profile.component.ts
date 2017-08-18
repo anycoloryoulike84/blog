@@ -51,8 +51,10 @@ export class ProfileComponent implements OnInit {
 
     } else {
 
-            this.router.navigate(['/user/my-account']);
-             console.log("Is logged in: " + this.loggedIn);
+      this.router.navigate(['/user/my-account']);
+       console.log(this.user.username + " is logged in: " + this.loggedIn);
+       console.log(this.user);
+
     }
 
 

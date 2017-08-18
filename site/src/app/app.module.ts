@@ -2,13 +2,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { RouterModule, Routes } from '@angular/router';
+
 
 
 import { AppComponent } from './app.component';
 import { BlogComponent } from './blog/blog/blog.component';
 import { PostDetailComponent } from './blog/post-detail/post-detail.component';
 import { HomeComponent } from './home/home.component';
-import { RouterModule, Routes } from '@angular/router';
 import { PostFormComponent } from './blog/post-form/post-form.component';
 import { LoginComponent } from './user/login/login.component';
 import { AuthService } from './user/auth.service';
@@ -51,4 +52,7 @@ const appRoutes: Routes = [
 export class AppModule { 
 
 }
+
+
+
 

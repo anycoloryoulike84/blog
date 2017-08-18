@@ -1,18 +1,25 @@
 
-<div  *ngIf="loggedIn">
+<div  *ngIf="user">
 
-	<p class="alert alert-success">Login Successful!</p>
+	<p class="alert alert-success">Login Successful! {{user.firstName | uppercase}} is logged in as "{{this.user.username}}".</p>
 
-<h3>Welcome, {{user.username}}</h3>
-
-
-
-<div>
-
-	<ul>
-		<li>email: {{user.email}}</li>
-	</ul>
+<h3>Welcome, {{user.firstName | uppercase}}</h3>
 
 
-</div>
+
+		<div>
+
+			<ul>
+				<li>Username: {{user.username}}</li>
+				<li>Name: {{user.firstName}}</li>
+				<li>email: {{user.email}}</li>
+			</ul>
+
+
+		</div>
+
+
+
+<footer class="footer"></footer>
+
 </div>

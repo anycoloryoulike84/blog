@@ -12,7 +12,11 @@ if (!installed) {
   var RoleMapping = app.models.RoleMapping;
 
 User.create([
+<<<<<<< HEAD
     {username: 'greg', email: 'ggriffin84@gmail.com', password: 'admin', "firstName": "admin", "lastName":"admin"}
+=======
+    {username: 'admin', email: 'ggriffin84@gmail.com', password: 'admin', "firstName": "greg", "lastName": "griffin"}
+>>>>>>> part-8-creating-account
   ], function(err, users) {
     if (err) throw err;
 
@@ -20,7 +24,7 @@ User.create([
     //create the admin role
     
     Role.create({
-      name: 'admin'
+      name: 'administrator'
     }, function(err, Role) {
       if (err) throw err;
 

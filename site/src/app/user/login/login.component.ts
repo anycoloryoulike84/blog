@@ -16,6 +16,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
 	user: User = new User();
+  loggedIn: boolean = false;
 
 
   constructor(
@@ -56,9 +57,13 @@ export class LoginComponent implements OnInit {
 
   		this.authService.setToken(token);
 
+
+      
+
   		// now we redirect to their profile if logged in
 
   		this.router.navigate(['/user/my-account']);
+      this.loggedIn = true;
 
   	}, err => {
 
