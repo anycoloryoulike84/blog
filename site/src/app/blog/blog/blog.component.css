@@ -10,14 +10,14 @@
 
 
 .load-more {
-	background-color: #eee;
+
 	display: inline-block;
 	text-align: center;
 	padding: 1.5%;
 	cursor: pointer;
 }
 .reached-end {
-    background-color: #ddd;
+
     display: inline-block;
     text-align: center;
     padding: 1.5%;
