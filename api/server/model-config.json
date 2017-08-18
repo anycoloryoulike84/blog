@@ -15,7 +15,7 @@
   },
   "User": {
     "dataSource": "db",
-    "public": true
+    "public": false
   },
   "AccessToken": {
     "dataSource": "db",
@@ -29,8 +29,7 @@
     "dataSource": "db",
     "public": false,
     "options": {
-      "strictObjectIDCoercion": true
-    }
+      "strictObjectIDCoercion": true  }
   },
   "Role": {
     "dataSource": "db",

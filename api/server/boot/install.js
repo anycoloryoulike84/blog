@@ -7,12 +7,12 @@ module.exports = function(app) {
 
 if (!installed) {
 
-  var User = app.models.User;
+  var User = app.models.account;
   var Role = app.models.Role;
   var RoleMapping = app.models.RoleMapping;
 
 User.create([
-    {username: 'admin', email: 'admin1@gmail.com', password: 'admin'}
+    {username: 'greg', email: 'ggriffin84@gmail.com', password: 'admin', "firstName": "admin", "lastName":"admin"}
   ], function(err, users) {
     if (err) throw err;
 
