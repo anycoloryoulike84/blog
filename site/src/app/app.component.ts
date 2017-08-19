@@ -69,6 +69,8 @@ export class AppComponent implements OnInit {
           this.userService.logout();
           this.authService.logout();
 
+          this.router.navigate(['./home'])
+
 
       }
 
