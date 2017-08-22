@@ -29,7 +29,7 @@ export class UserService {
 
 login(username:string,password:string): Observable<any>{
 
-	let url = "http://0.0.0.0:3000/api/accounts/login?include=user";
+	    let url = "http://0.0.0.0:3000/api/accounts/login?include=user";
 
 		return this.http.post(url, {
 			username:username, 
@@ -44,6 +44,21 @@ login(username:string,password:string): Observable<any>{
 
 	}
 	// end login fx
+
+
+	register(user: User): Observable<any>{
+		
+		let url = "http://0.0.0.0:3000/api/accounts";
+		
+		this.headers.delete("Authorization");
+
+		return this.http.post(url, user, {headers: this.headers}).map(res => res.json()).catch(err => {
+
+			return Observable.throw(err);
+		});
+
+	}
+
 
 
 	logout(): Observable<any>{

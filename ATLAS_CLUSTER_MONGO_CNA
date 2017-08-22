@@ -1,6 +1,6 @@
 
 Here is the URI string to access the Atlas cluster that I've set up for Cal Nurses. When you get some time, please test this and see if it works. Thanks.
-
+ 
 
 mongodb://gregg:ompVZlwfJchmWOeu@mrmrs-shard-00-00-egefr.mongodb.net:27017,mrmrs-shard-00-01-egefr.mongodb.net:27017,mrmrs-shard-00-02-egefr.mongodb.net:27017/brm?ssl=true&replicaSet=mrmrs-shard-0&authSource=admin 
 
