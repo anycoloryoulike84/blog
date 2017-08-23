@@ -20,19 +20,13 @@
       "type": "belongsTo",
       "model": "account",
       "foreignKey": ""
-                }
-    },
+    }
+  },
   "acls": [
     {
       "accessType": "*",
       "principalType": "ROLE",
       "principalId": "administrator",
-      "permission": "ALLOW"
-    },
-    {
-      "accessType": "*",
-      "principalType": "ROLE",
-      "principalId": "admin2",
       "permission": "ALLOW"
     },
     {

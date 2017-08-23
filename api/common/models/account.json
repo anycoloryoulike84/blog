@@ -21,14 +21,20 @@
     "posts": {
       "type": "hasMany",
       "model": "post",
-      "foreignKey": "" 
+      "foreignKey": ""
     }
-    },
+  },
   "acls": [
-      {
+    {
       "accessType": "*",
       "principalType": "ROLE",
       "principalId": "admin",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "administrator",
       "permission": "ALLOW"
     }
   ],

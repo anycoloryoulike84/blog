@@ -1,4 +1,3 @@
-
 {
   "_meta": {
     "sources": [
@@ -30,7 +29,8 @@
     "dataSource": "db",
     "public": false,
     "options": {
-      "strictObjectIDCoercion": true  }
+      "strictObjectIDCoercion": true
+    }
   },
   "Role": {
     "dataSource": "db",
