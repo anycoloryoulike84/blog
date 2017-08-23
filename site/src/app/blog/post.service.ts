@@ -4,6 +4,8 @@ import {Observable} from 'rxjs';
 import {Post} from './blog/post';
 import {isNull} from 'util';
 import {AuthService} from '../user/auth.service';
+import { User } from '../user/user';
+
 
 
 
@@ -63,7 +65,11 @@ export class PostService {
 
     createPost(post: Post): Observable<any> {
 
-      let url = "http://0.0.0.0:3000/api/posts";
+      let user = this.authService.getCurrentUser() as User;
+      let userId = user.id;
+
+      let url = "http://0.0.0.0:3000/api/accounts/" + userId + "/posts";
+
       return this.http.post(url, post, { headers: this.headers}).map( res => res.json() ).catch(err => {
         
         return Observable.throw(err);
@@ -75,7 +81,12 @@ export class PostService {
 
         updatePost(post: Post): Observable<any> {
 
-      let url = "http://0.0.0.0:3000/api/posts/" + post.id;
+
+      let user = this.authService.getCurrentUser() as User;
+      let userId = user.id;
+
+      let url = "http://0.0.0.0:3000/api/accounts/" + userId + "/posts/" + post.id;
+
       return this.http.put(url, post, { headers: this.headers}).map( res => res.json() ).catch(err => {
         return Observable.throw(err);
 
