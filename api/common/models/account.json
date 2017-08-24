@@ -41,7 +41,14 @@
       "principalType": "ROLE",
       "principalId": "$owner",
       "permission": "ALLOW",
-      "property": ["__create__posts", "__delete__posts", "__destroyById__posts", "__findById__posts", "__get__posts", "__updateById__posts"]
+      "property": [
+        "__create__posts",
+        "__delete__posts",
+        "__destroyById__posts",
+        "__findById__posts",
+        "__get__posts",
+        "__updateById__posts"
+      ]
     }
   ],
   "methods": {}
