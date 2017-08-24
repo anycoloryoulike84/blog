@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
 
 	// we have user object data. now we must post it to the API and get the acess token
   	
-  	console.log("login tapped with data", this.user);
+  	console.log("login tapped with data: ", this.user);
 
 
   	let user = this.user;

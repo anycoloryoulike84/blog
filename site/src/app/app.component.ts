@@ -58,6 +58,22 @@ export class AppComponent implements OnInit {
 
       ngOnInit() {
 
+        this.authService.onAuthChange$.subscribe(user => {
+
+
+          if (user) {
+            // user has logged in
+            this.loggedIn = true;
+                      console.log("Logged In as: ", user.username );
+          } else {
+            // user has logged out
+            this.loggedIn = false;
+
+          }
+
+        });
+
+
 
 
       }
@@ -65,6 +81,7 @@ export class AppComponent implements OnInit {
 
       logout() {
           // request logout to server api
+          
           this.loggedIn = false;
           this.userService.logout();
           this.authService.logout();

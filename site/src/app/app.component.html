@@ -25,7 +25,7 @@
                 <ul class="dropdown-menu">
                   
                   
-                  <li><a *ngIf="loggedIn" routerLink="/blog"  (click)="logout()">LogOut <small>  (<i>{{user.username}}</i>)</small></a></li>
+                  <li><a *ngIf="loggedIn" routerLink="/blog"  (click)="logout()">LogOut <small>  (<i>{{this.user.username}}</i>)</small></a></li>
                   <li><a *ngIf="!loggedIn" routerLink="/user/login">Login</a></li>
                   <li><a *ngIf="!loggedIn" routerLink="/user/register">Create an Account</a></li>
                   <li><a *ngIf="loggedIn" routerLink="/blog-add">Create Post</a></li>
