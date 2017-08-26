@@ -1,0 +1,26 @@
+<h1>Welcome to {{pageTitle | uppercase}}  </h1>
+
+
+	<ul class="nav nav-tabs">
+	  <li><a routerLink="/user/my-account">My Account</a></li>
+	  <li class="active" ><a routerLink="/user/{{user.id}}/blog">My Posts</a></li>
+	</ul>
+
+
+ 
+
+
+<div class="user-posts" >
+	 
+	<article *ngFor="let post of posts" class="user-blog-post post">
+
+
+		<h2>{{post.title}}</h2>
+				<div class="meta">
+			<span>Author: {{post.account.username}}</span>
+		</div>
+		<div class="post-body">{{post.body}}</div>
+
+	</article>
+
+</div>

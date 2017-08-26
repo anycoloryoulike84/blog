@@ -66,7 +66,7 @@ export class LoginComponent implements OnInit {
       this.loggedIn = true;
 
   	}, err => {
-
+      alert("incorrect login!");
   		console.log(err);
 
   	})

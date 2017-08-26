@@ -16,6 +16,7 @@ import { AuthService } from './user/auth.service';
 import { UserService } from './user/user.service';
 import { ProfileComponent } from './user/profile/profile.component';
 import { RegisterComponent } from './user/register/register.component';
+import { UserPostsComponent } from './user/user-posts/user-posts.component';
 
 
 const appRoutes: Routes = [
@@ -27,7 +28,8 @@ const appRoutes: Routes = [
   { path: 'blog-add', component: PostFormComponent },
   { path: 'user/login', component: LoginComponent },
   { path: 'user/my-account', component: ProfileComponent },
-  { path: 'user/register', component: RegisterComponent }
+  { path: 'user/register', component: RegisterComponent },
+  { path: 'user/:id/blog', component: UserPostsComponent }
   
 ];
 
@@ -41,7 +43,8 @@ const appRoutes: Routes = [
     PostFormComponent,
     LoginComponent,
     ProfileComponent,
-    RegisterComponent
+    RegisterComponent,
+    UserPostsComponent
   ],
   imports: [
     BrowserModule,

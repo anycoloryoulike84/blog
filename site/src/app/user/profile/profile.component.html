@@ -1,6 +1,17 @@
 
 
-<div  *ngIf="user">
+
+	<ul class="nav nav-tabs">
+
+
+	  <li class="active"><a routerLink="/user/my-account">My Account</a></li>
+	  <li><a routerLink="/user/{{user.id}}/blog">My Posts</a></li>
+	</ul>
+
+
+
+
+<div class="my-account" *ngIf="user">
 
 	<p class="alert alert-success">Login Successful! {{user.firstName | uppercase}} is logged in as "{{this.user.username}}".</p>
 

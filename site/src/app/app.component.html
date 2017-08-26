@@ -14,29 +14,41 @@
             </button>
             <a class="navbar-brand" href="#">{{title}}</a>
           </div>
+
           <div id="navbar" class="navbar-collapse collapse">
+<!--             
+
             <ul class="nav navbar-nav">
               	<li><a routerLink="/home" routerLinkActive="active">Home</a></li>
         				<li><a routerLink="/blog" routerLinkActive="active">Blog</a></li>
-
-				<li class="dropdown">
-                <a routerLink="/user/my-account" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Account <span class="caret"></span></a>
-                
-                <ul class="dropdown-menu">
-                  
-                  
-                  <li><a *ngIf="loggedIn" routerLink="/blog"  (click)="logout()">LogOut <small>  (<i>{{this.user.username}}</i>)</small></a></li>
-                  <li><a *ngIf="!loggedIn" routerLink="/user/login">Login</a></li>
-                  <li><a *ngIf="!loggedIn" routerLink="/user/register">Create an Account</a></li>
-                  <li><a *ngIf="loggedIn" routerLink="/blog-add">Create Post</a></li>
-
-
-                </ul>
-
+				        <li class="dropdown"><a routerLink="/user/my-account" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Account <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a *ngIf="loggedIn" routerLink="/blog"  (click)="logout()">LogOut <small>  (<i>{{this.user.username}}</i>)</small></a></li>
+                    <li><a *ngIf="!loggedIn" routerLink="/user/login">Login</a></li>
+                    <li><a *ngIf="!loggedIn" routerLink="/user/register">Create an Account</a></li>
+                    <li><a *ngIf="loggedIn" routerLink="/blog-add">Create Post</a></li>
+                  </ul>
               </li>
+            </ul> -->
+
+<ul class="nav navbar-nav">
+          <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
+          <li><a routerLink="/blog" routerLinkActive="active">Blog</a></li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" role="button"
+               aria-haspopup="true" aria-expanded="false">My account <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li *ngIf="loggedIn"><a routerLink="/user/my-account">My profile</a></li>
+
+<li *ngIf="loggedIn" ><a routerLink="/blog" (click)="logout()">LogOut <small *ngIf="this.user.username">  <i><strong>({{this.user.username}})</strong></i></small></a></li>
+
+              <li *ngIf="!loggedIn"><a routerLink="/user/login">Login</a></li>
+              <li *ngIf="!loggedIn"><a routerLink="/user/register">Create an account</a></li>
+              <li *ngIf="loggedIn"><a routerLink="/blog-add">Create blog post</a></li>
+
             </ul>
-
-
+          </li>
+        </ul>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
       </nav>

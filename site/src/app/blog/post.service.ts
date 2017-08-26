@@ -31,6 +31,13 @@ export class PostService {
 	 });
 
 
+  updateHeaders(){
+
+    this.headers.set('Authorization', this.authService.getToken());
+
+  }
+
+
   	getPosts(filter: string): Observable<Post[]> {
   		
   		 let url = "http://0.0.0.0:3000/api/posts";
@@ -47,6 +54,7 @@ export class PostService {
   			return Observable.throw(err)
   		
   		});
+
   	}
 
 
@@ -60,6 +68,31 @@ export class PostService {
   		});
 
   	}
+
+
+
+
+    getUserPosts(userId: string, filter: string) {
+
+
+       let url = "http://0.0.0.0:3000/api/accounts/" + userId + "/posts";
+
+      if (!isNull(filter) && filter !== "") {
+
+         url = url + "?filter=" + filter;
+
+      }
+
+
+      return this.http.get(url, {headers: this.headers}).map( res => res.json() ).catch(err => {
+        
+        return Observable.throw(err)
+      
+      });
+
+
+
+    }
 
 
 
@@ -79,8 +112,9 @@ export class PostService {
     }
 
 
-        updatePost(post: Post): Observable<any> {
+     updatePost(post: Post): Observable<any> {
 
+       this.updateHeaders();
 
       let user = this.authService.getCurrentUser() as User;
       let userId = user.id;
