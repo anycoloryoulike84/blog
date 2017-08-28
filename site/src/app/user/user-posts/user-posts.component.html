@@ -10,7 +10,7 @@
  
 
 
-<div class="user-posts" >
+<div *ngIf="user" class="user-posts" >
 	 
 	<article *ngFor="let post of posts" class="user-blog-post post">
 

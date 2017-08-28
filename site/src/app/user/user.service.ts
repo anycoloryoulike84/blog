@@ -26,6 +26,15 @@ export class UserService {
   	) {  }
 
 
+  getUserById(id:string): Observable<User> {
+  		
+  		let url = "http://0.0.0.0:3000/api/accounts/" + id;
+  	  	return this.http.get(url, {headers: this.headers}).map(res => res.json()).catch(err => {
+  	  			return Observable.throw(err);
+  	  	});
+  }
+
+
 
 login(username:string,password:string): Observable<any>{
 

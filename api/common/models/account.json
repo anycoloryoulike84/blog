@@ -5,9 +5,6 @@
   "options": {
     "validateUpsert": true
   },
-  "protected": [
-    "email"
-  ],
   "properties": {
     "firstName": {
       "type": "string"
@@ -17,6 +14,7 @@
     }
   },
   "validations": [],
+  "protected": ["email"],
   "relations": {
     "posts": {
       "type": "hasMany",
@@ -30,6 +28,12 @@
       "principalType": "ROLE",
       "principalId": "administrator",
       "permission": "ALLOW"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "findById"
     },
     {
       "principalType": "ROLE",
