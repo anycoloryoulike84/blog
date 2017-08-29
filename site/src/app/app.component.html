@@ -31,24 +31,38 @@
               </li>
             </ul> -->
 
-<ul class="nav navbar-nav">
-          <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
-          <li><a routerLink="/blog" routerLinkActive="active">Blog</a></li>
-          <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" role="button"
-               aria-haspopup="true" aria-expanded="false">My account <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li *ngIf="loggedIn"><a routerLink="/user/my-account">My profile</a></li>
+              <ul class="nav navbar-nav">
+                <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
+                <li><a routerLink="/blog" routerLinkActive="active">Blog</a></li>
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" role="button"
+                     aria-haspopup="true" aria-expanded="false">My account <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                      <li *ngIf="loggedIn"><a routerLink="/user/my-account">My profile</a></li>
 
-<li *ngIf="loggedIn" ><a routerLink="/blog" (click)="logout()">LogOut <small *ngIf="this.user.username">  <i><strong>({{this.user.username}})</strong></i></small></a></li>
+                      <li *ngIf="loggedIn" ><a routerLink="/blog" (click)="logout()">LogOut <small *ngIf="this.user.username">  <i><strong>({{this.user.username}})</strong></i></small></a></li>
+                      <li *ngIf="!loggedIn"><a routerLink="/user/login">Login</a></li>
+                      <li *ngIf="!loggedIn"><a routerLink="/user/register">Create an account</a></li>
+                      <li *ngIf="loggedIn"><a routerLink="/blog-add">Create blog post</a></li>
+                  </ul>
+                </li>
+              </ul>
 
-              <li *ngIf="!loggedIn"><a routerLink="/user/login">Login</a></li>
-              <li *ngIf="!loggedIn"><a routerLink="/user/register">Create an account</a></li>
-              <li *ngIf="loggedIn"><a routerLink="/blog-add">Create blog post</a></li>
+              <div class="nav navbar-nav navbar-right">
+                
+                <div class="search-block">
+                  <input #searchTextBox (keyup)="onKeyUp(searchTextBox.value)" class="form-control" name="search" placeholder="Search a post...">
+                   <div class="dropdown" [class.open]="!autocompleteBox.hide"> 
+                      
+                      <ul *ngIf="posts.length" class="dropdown-menu">
+                         <li *ngFor="let post of posts" (click)="showDetail(post)"> {{post.title}}</li>
+                      </ul>
 
-            </ul>
-          </li>
-        </ul>
+                   </div>
+
+                </div>
+              </div>
+
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
       </nav>

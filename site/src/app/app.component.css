@@ -7,3 +7,11 @@
   width: 100%;
 }
 
+.search-block .dropdown-menu li {
+	padding: 3px 5px;
+	cursor: pointer;
+}
+.search-block .dropdown-menu li:hover {
+	background-color: #ccc;
+	opacity: .9;
+}

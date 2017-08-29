@@ -19,8 +19,8 @@
 
 <div class="pager">
 	<span [class.alert-info]="!pager.reachedEnd"   *ngIf="!pager.reachedEnd" class="load-more" (click)="loadMore()">
-		<span *ngIf="!pager.isLoading" class="load-more ">Load More...</span>
-		<span *ngIf="pager.isLoading" class="load-more ">
+		<span *ngIf="!pager.isLoading">Load More...</span>
+		<span *ngIf="pager.isLoading" class="load-more">
 		  <i class="glyphicon glyphicon-refresh" [class.is-loading]="pager.isLoading"></i>
 			Loading...
 		</span>

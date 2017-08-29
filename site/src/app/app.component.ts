@@ -6,6 +6,7 @@ import {isNullOrUndefined} from "util";
 import {User} from './user/user';
 import {AuthService} from './user/auth.service';
 import {UserService} from './user/user.service';
+import {Observable, Subject} from 'rxjs';
 
 
 @Component({
@@ -19,7 +20,6 @@ export class AppComponent implements OnInit {
 
   title: string = 'CNA Database';
   description: string = 'CNA Replica Set Test Site for example';
-	posts: Post[] = [];
 	post: Post = new Post();
   user: User = new User();
   loggedIn: boolean = false;
@@ -34,6 +34,18 @@ export class AppComponent implements OnInit {
       limit: this.pager.limit,
       skip: this.pager.limit * this.pager.current
   };
+
+  private searchTerm = new Subject<string>();
+  
+  posts: Post[] = [];
+  
+  autocompleteBox = { 
+
+    hide: true;
+
+  }
+
+
 
   constructor(
     
@@ -52,6 +64,21 @@ export class AppComponent implements OnInit {
         this.loggedIn = true;
 
       }
+
+      this.searchTerm.debounceTime(100).distinctUntilChanged().subscribe(searchTerm => {
+
+        this.postService.search(searchTerm).subscribe(response => {
+
+          this.posts = response as Post[];
+          this.autocompleteBox.hide = false;
+
+        }, err => {
+          console.log(err);
+        });
+
+
+      });
+     
 
 
      }
@@ -92,6 +119,21 @@ export class AppComponent implements OnInit {
       }
 
 
+      onKeyUp(searchText: string) {
+
+        if (searchText !== "") {
+          this.searchTerm.next(searchText);
+            
+        }
+
+
+      }
+
+      showDetail(post: Post) {
+        this.autocompleteBox.hide = true;
+        this.router.navigate(['/blog', post.id]);
+
+      }
 
 
 }

@@ -42,12 +42,12 @@ export class PostService {
   		
   		 let url = "http://0.0.0.0:3000/api/posts";
 
+      
       if (!isNull(filter) && filter !== "") {
 
          url = url + "?filter=" + filter;
 
       }
-
 
   		return this.http.get(url, {headers: this.headers}).map( res => res.json() ).catch(err => {
   			
@@ -56,6 +56,30 @@ export class PostService {
   		});
 
   	}
+
+
+
+    search(text: string): Observable<any>{
+      
+      let query = {
+
+        where: {
+          or: [{title: {like: text, options: "i"}}],
+        }
+      };
+
+      let filter = encodeURI(JSON.stringify(query));
+
+      
+      let url = "http://0.0.0.0:3000/api/posts?filter=" + filter ;
+
+      return this.http.get(url, {headers: this.headers}).map( res => res.json() ).catch(err => {
+        
+        return Observable.throw(err)
+      
+      });
+
+    }
 
 
   	getPost(id: string): Observable<Post>{
