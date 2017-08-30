@@ -10,8 +10,12 @@
 </div>
 
 <blockquote>
-	<h3>{{post.title}}</h3>
-  <p>{{post.body}}</p>
+
+<h3>{{post.title}}</h3>
+
+  <div class="post-body" [innerHTML]="post.body"></div>
+
   <footer>{{post.author}}  <cite title="{{post.title}}">{{post.date | date:"short"}}</cite></footer>
+
 </blockquote>
 

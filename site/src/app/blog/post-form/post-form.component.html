@@ -8,52 +8,31 @@
 	</ul>
 </div>
 
-
-
-
 <form #f="ngForm" (ngSubmit)="onSubmit()">
 
-<!-- 
-<div *ngIf="successMessage"  class="alert alert-success" role="alert">
-    {{successMessage}}
-</div>
- -->
-
-<div *ngIf="errorMessage"  class="alert alert-danger" role="alert">
-	{{errorMessage}}
-</div>
-
-
-
-
-  <div class="form-group">
-    <label for="post-title">Post Title</label>
-    <input [(ngModel)]="post.title" name="title" type="text" class="form-control" id="post-title"  placeholder="Enter blog title">
-  </div>
-
-
-  <div class="form-group">
-    <label for="post-body">Post Body</label>
-    <textarea [(ngModel)]="post.body" name="body" class="form-control" id="post-body" rows="6" cols="6" placeholder="Enter blog content"></textarea>
-  </div>
-
-
+    <div *ngIf="errorMessage"  class="alert alert-danger" role="alert">
+    	{{errorMessage}}
+    </div>
 
     <div class="form-group">
-    <label for="post-author">Post Author</label>
-    <input [(ngModel)]="post.author" name="author" type="text" class="form-control" id="post-author"  placeholder="Enter blog author">
-  </div>
+      <label for="post-title">Post Title</label>
+      <input [(ngModel)]="post.title" name="title" type="text" class="form-control" id="post-title"  placeholder="Enter blog title">
+    </div>
+
+    <div class="form-group" id="post-body-style">
+      <label for="post-body">Post Body</label>
+      <!-- Custom Directive -->
+      <text-editor [value]="defaultBodyValue" [elementId]="post-body" (onEditorKeyup)="onBodyTextEditorKeyUp($event)"></text-editor>
+    </div>
+
+<!--     <div class="form-group">
+      <label for="post-author">Post Author</label>
+      <input [(ngModel)]="post.author" name="author" type="text" class="form-control" id="post-author"  placeholder="Enter blog author">
+    </div> -->
  
-
-
-  <button [disabled]="loading" type="submit" class="btn btn-primary">
-
-
-  	<span *ngIf="post.id">Update Changes</span><span *ngIf="!post.id">Create</span>
-
-
-  </button>
+    <button [disabled]="loading" type="submit" class="btn btn-primary">
+    	<span *ngIf="post.id">Update Changes</span><span *ngIf="!post.id">Create</span>
+    </button>
 
 </form>
-
 <br>

@@ -3,7 +3,7 @@ import {Post} from '../blog/post';
 import {PostService} from '../post.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import {Observable} from "rxjs";
-
+ 
 
 @Component({
   selector: 'app-post-form',
@@ -18,6 +18,7 @@ export class PostFormComponent implements OnInit {
 	errorMessage = "";
   successMessage = "";
 	loading = false;
+  defaultBodyValue: string = "";
 
 
   constructor(
@@ -48,6 +49,7 @@ export class PostFormComponent implements OnInit {
 
        this.loading = false;
        this.post = res as Post;
+       this.defaultBodyValue = this.post.body;
 
     }, err => {
     console.log(err);
@@ -101,5 +103,18 @@ export class PostFormComponent implements OnInit {
   	})
 
   }
+
+
+  onBodyTextEditorKeyUp(textValue) {
+
+    console.log(textValue);
+      this.post.body = textValue;
+
+  }
+
+
+
+
+
 
 }

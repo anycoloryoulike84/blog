@@ -41,7 +41,7 @@ export class AppComponent implements OnInit {
   
   autocompleteBox = { 
 
-    hide: true;
+    hide: true
 
   }
 
