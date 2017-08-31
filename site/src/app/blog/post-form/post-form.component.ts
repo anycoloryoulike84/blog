@@ -3,7 +3,7 @@ import {Post} from '../blog/post';
 import {PostService} from '../post.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import {Observable} from "rxjs";
- 
+import {Category} from '../category.model';
 
 @Component({
   selector: 'app-post-form',
@@ -19,7 +19,7 @@ export class PostFormComponent implements OnInit {
   successMessage = "";
 	loading = false;
   defaultBodyValue: string = "";
-
+  categories: Category[] = [];
 
   constructor(
 
@@ -55,10 +55,21 @@ export class PostFormComponent implements OnInit {
     console.log(err);
       
       });
-
-
-
     }
+
+    this.postService.getCategories().subscribe(res => {
+
+      this.categories = res;
+
+
+    }, err => {
+      console.log(err)
+    });
+
+
+
+
+
 
   }
 

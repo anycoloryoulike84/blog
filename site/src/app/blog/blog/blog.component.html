@@ -6,31 +6,48 @@
 <p>Welcome to the {{title}} page! </p>
 
 
-<div class="blog-list">
-	<ul>
-		<li class="mb-1" *ngFor="let post of posts">
-		 <h2><a routerLink="/blog/{{post.id}}">{{post.title}}</a></h2> 
-		 <div  class="post-body" [innerHTML]="post.body"></div>
-		</li>
-	</ul>
+<div class="row">
+
+	<div class="col-md-9">
+		<div class="blog-list">
+			<ul>
+				<li class="mb-1" *ngFor="let post of posts">
+				 <h2><a routerLink="/blog/{{post.id}}">{{post.title}}</a></h2> 
+				 <div  class="post-body" [innerHTML]="post.body"></div>
+				</li>
+			</ul>
+		</div>
+
+		<div class="pager">
+			<span [class.alert-info]="!pager.reachedEnd"   *ngIf="!pager.reachedEnd" class="load-more" (click)="loadMore()">
+				<span *ngIf="!pager.isLoading">Load More...</span>
+				<span *ngIf="pager.isLoading" class="load-more">
+				  <i class="glyphicon glyphicon-refresh" [class.is-loading]="pager.isLoading"></i>
+					Loading...
+				</span>
+			</span>
+			<span [class.alert-success]="pager.reachedEnd"  *ngIf="pager.reachedEnd" class="reached-end">You've reached the end of the post history. <i>Success!</i> </span>
+		</div>
+	</div>
+
+	<div class="col-md-3">
+		<div id="sidebar">
+
+			<div class="block">
+				<h3>Categories</h3>
+				<ul>
+					<li *ngFor="let cat of categories"><a routerLink="/category/{{cat.id}}" >{{cat.title}}</a></li>
+				</ul>
+			</div>
+
+
+		</div>
+	</div>
+
+
+
+
+
+
+
 </div>
-
-
-
-<div class="pager">
-	<span [class.alert-info]="!pager.reachedEnd"   *ngIf="!pager.reachedEnd" class="load-more" (click)="loadMore()">
-		<span *ngIf="!pager.isLoading">Load More...</span>
-		<span *ngIf="pager.isLoading" class="load-more">
-		  <i class="glyphicon glyphicon-refresh" [class.is-loading]="pager.isLoading"></i>
-			Loading...
-		</span>
-	</span>
-
-	<span [class.alert-success]="pager.reachedEnd"  *ngIf="pager.reachedEnd" class="reached-end">You've reached the end of the post history. <i>Success!</i> </span>
-
-
-
-	
-</div>
-
-

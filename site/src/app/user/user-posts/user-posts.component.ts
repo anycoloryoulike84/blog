@@ -5,7 +5,7 @@ import {UserService} from '../user.service';
 import {PostService} from '../../blog/post.service';
 import { ActivatedRoute  } from '@angular/router';
 import {Post} from '../../blog/blog/post';
-import {Title } from '@angular/platform-browser';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-user-posts',

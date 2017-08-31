@@ -1,3 +1,6 @@
+
+
+
 <h2><span *ngIf="post.id">{{post.title}}</span>  <span *ngIf="!post.id">Create New Post</span></h2>
 <div class="tab-actions">
 	<ul class="nav nav-tabs">
@@ -8,8 +11,12 @@
 	</ul>
 </div>
 
-<form #f="ngForm" (ngSubmit)="onSubmit()">
 
+
+
+
+
+<form #f="ngForm" (ngSubmit)="onSubmit()">
     <div *ngIf="errorMessage"  class="alert alert-danger" role="alert">
     	{{errorMessage}}
     </div>
@@ -26,13 +33,36 @@
     </div>
 
 <!--     <div class="form-group">
-      <label for="post-author">Post Author</label>
-      <input [(ngModel)]="post.author" name="author" type="text" class="form-control" id="post-author"  placeholder="Enter blog author">
+      <label for="author">Author</label>
+      <select name="author">
+        <option *ngFor="let post of posts" [ngValue]="post.id">{{post.author}}</option>
+      </select>
     </div> -->
- 
-    <button [disabled]="loading" type="submit" class="btn btn-primary">
+
+    <div class="form-group">
+      <label for="post-author">Post Author</label>
+      <input [(ngModel)]="post.author" name="author" type="text" class="form-control" id="post-author"  placeholder="Enter blog author"> 
+    </div>
+
+    <div class="form-group">
+      <label for="category">Category</label>
+      <select class="form-control" name="category" id="category" [(ngModel)]="post.categoryId">
+        <option *ngFor="let category of categories" [ngValue]="category.id">{{category.title}}</option>
+      </select>
+    </div>
+
+    <button id="mb-10" [disabled]="loading" type="submit" class="btn btn-primary">
     	<span *ngIf="post.id">Update Changes</span><span *ngIf="!post.id">Create</span>
     </button>
-
 </form>
-<br>
+
+
+
+
+
+
+
+
+
+
+

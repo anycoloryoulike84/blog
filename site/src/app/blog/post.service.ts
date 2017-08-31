@@ -5,6 +5,7 @@ import {Post} from './blog/post';
 import {isNull} from 'util';
 import {AuthService} from '../user/auth.service';
 import { User } from '../user/user';
+import {Category} from '../blog/category.model';
 
 
 
@@ -31,11 +32,11 @@ export class PostService {
 	 });
 
 
-  updateHeaders(){
+    updateHeaders(){
 
-    this.headers.set('Authorization', this.authService.getToken());
+      this.headers.set('Authorization', this.authService.getToken());
 
-  }
+    }
 
 
   	getPosts(filter: string): Observable<Post[]> {
@@ -92,6 +93,40 @@ export class PostService {
   		});
 
   	}
+
+
+
+    getCategories(): Observable<Category[]> {
+
+     let url = "http://0.0.0.0:3000/api/categories";
+
+     return this.http.get(url, {headers: this.headers}).map(res => res.json() as Category[]).catch(err => Observable.throw(err));
+
+    }
+
+
+
+    getCategoryById(id: string): Observable<Category> {
+
+     let url = "http://0.0.0.0:3000/api/categories/" + id;
+
+     return this.http.get(url, {headers: this.headers}).map(res => res.json() as Category[]).catch(err => Observable.throw(err));
+
+
+    }
+
+
+    getPostByCategoryId(id: string): Observable<Post[]> {
+
+     let url = "http://0.0.0.0:3000/api/categories/" + id + "/posts";
+
+     return this.http.get(url, {headers: this.headers}).map(res => res.json() as Post[]).catch(err => Observable.throw(err));
+
+
+    }
+
+
+
 
 
 

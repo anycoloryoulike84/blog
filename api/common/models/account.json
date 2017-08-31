@@ -5,16 +5,21 @@
   "options": {
     "validateUpsert": true
   },
+  "protected": [
+    "email"
+  ],
   "properties": {
     "firstName": {
       "type": "string"
     },
     "lastName": {
       "type": "string"
+    },
+    "email": {
+      "type": "string"
     }
   },
   "validations": [],
-  "protected": ["email"],
   "relations": {
     "posts": {
       "type": "hasMany",

@@ -18,6 +18,7 @@ import { ProfileComponent } from './user/profile/profile.component';
 import { RegisterComponent } from './user/register/register.component';
 import { UserPostsComponent } from './user/user-posts/user-posts.component';
 import { EditorComponent } from './helpers/editor/editor.component';
+import { CategoryViewComponent } from './blog/category-view/category-view.component';
 
 
 const appRoutes: Routes = [
@@ -30,7 +31,8 @@ const appRoutes: Routes = [
   { path: 'user/login', component: LoginComponent },
   { path: 'user/my-account', component: ProfileComponent },
   { path: 'user/register', component: RegisterComponent },
-  { path: 'user/:id/blog', component: UserPostsComponent }
+  { path: 'user/:id/blog', component: UserPostsComponent },
+  { path: 'category/:id', component: CategoryViewComponent }
   
 ];
 
@@ -46,7 +48,8 @@ const appRoutes: Routes = [
     ProfileComponent,
     RegisterComponent,
     UserPostsComponent,
-    EditorComponent
+    EditorComponent,
+    CategoryViewComponent
   ],
   imports: [
     BrowserModule,

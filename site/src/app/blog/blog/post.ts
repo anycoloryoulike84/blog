@@ -6,6 +6,7 @@ export class Post{
 		public title?: string,
 		public body?: string,
 		public author?: string,
+		public categoryId?: string
 
 		){
 		
