@@ -56,6 +56,12 @@
       "principalId": "$everyone",
       "permission": "ALLOW",
       "property": "__create__comments"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "__delete__comments"
     }
   ],
   "methods": {}

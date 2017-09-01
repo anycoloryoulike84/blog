@@ -37,6 +37,6 @@
 <div class="comment-form">
 
 	<h2>Leave a Comment</h2>
-	<app-comment-form [postId]="postId"></app-comment-form>
+	<app-comment-form (newComment)="onNewComment($event)" [postId]="postId"></app-comment-form>
 
 </div>

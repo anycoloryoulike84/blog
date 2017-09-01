@@ -47,8 +47,19 @@ export class PostDetailComponent implements OnInit {
 
   	}, err => {
   		console.log(err);
-  	});  
+  	
+    }); 
+
   }
+
+
+      onNewComment(event){
+
+        this.comments.push(event);
+        
+        console.log("Comment added: ", event);
+
+      }
 
 }
 
