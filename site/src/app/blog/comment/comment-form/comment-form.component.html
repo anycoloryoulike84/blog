@@ -1,0 +1,43 @@
+
+
+
+
+
+
+
+
+<form #f="ngForm" (ngSubmit)="onSubmit()">
+    
+    <div *ngIf="errorMessage"  class="alert alert-danger" role="alert">
+    	{{errorMessage}}
+
+    </div>
+
+
+    <div class="form-group">
+      <label for="comment-author">Your Name</label>
+      <input [(ngModel)]="comment.name" name="name" type="text" class="form-control" id="comment-author"  placeholder="Enter your name"> 
+    </div>
+
+    <div class="form-group">
+      <label for="comment-title">Comment Title</label>
+      <input [(ngModel)]="comment.title" name="title" type="text" class="form-control" id="comment-title"  placeholder="Enter Comment title">
+    </div>
+
+    <div class="form-group">
+      <label for="comment-body">Comment Body</label>
+      
+      <textarea class="form-control" rows="10" cols="10" id="comment-body" placeholder="Enter your comment" name="body" [(ngModel)]="comment.body"></textarea>
+
+    </div>
+
+
+    <button id="mb-10"  type="submit" class="btn btn-primary">
+      	<span>Publish Your Comment</span>
+    </button>
+
+
+
+
+</form>
+

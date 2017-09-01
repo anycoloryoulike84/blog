@@ -1,3 +1,4 @@
+
 export class Post{
 
 	constructor(
@@ -6,7 +7,8 @@ export class Post{
 		public title?: string,
 		public body?: string,
 		public author?: string,
-		public categoryId?: string
+		public categoryId?: string,
+		public comments?: Comment[],
 
 		){
 		

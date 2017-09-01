@@ -1,5 +1,8 @@
 
 
+
+
+
 <div class="tab-actions">
 	<ul class="nav nav-tabs">
 	  <li *ngIf="post.id"><a routerLink="/blog/{{post.id}}">View</a></li>
@@ -9,13 +12,31 @@
 	</ul>
 </div>
 
+
 <blockquote>
-
-<h3>{{post.title}}</h3>
-
-  <div class="post-body" [innerHTML]="post.body"></div>
-
-  <footer>{{post.author}}  <cite title="{{post.title}}">{{post.date | date:"short"}}</cite></footer>
-
+	<h3>{{post.title}}</h3>
+	  <div class="post-body" [innerHTML]="post.body"></div>
+	  <footer>{{post.author}}  <cite title="{{post.title}}">{{post.date | date:"short"}}</cite></footer>
 </blockquote>
 
+
+
+<div id="comments">
+		<ul>	
+			<h2>Comments:</h2>
+			<li *ngFor="let comment of comments">
+				<h3>{{comment.name}} says: {{comment.title}}</h3>
+				<div class="comment-body">
+					<p>{{comment.body}}</p>
+				</div>
+			</li>
+		</ul>
+</div>
+
+
+<div class="comment-form">
+
+	<h2>Leave a Comment</h2>
+	<app-comment-form [postId]="postId"></app-comment-form>
+
+</div>

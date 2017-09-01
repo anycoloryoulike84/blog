@@ -19,6 +19,7 @@ import { RegisterComponent } from './user/register/register.component';
 import { UserPostsComponent } from './user/user-posts/user-posts.component';
 import { EditorComponent } from './helpers/editor/editor.component';
 import { CategoryViewComponent } from './blog/category-view/category-view.component';
+import { CommentFormComponent } from './blog/comment/comment-form/comment-form.component';
 
 
 const appRoutes: Routes = [
@@ -49,7 +50,8 @@ const appRoutes: Routes = [
     RegisterComponent,
     UserPostsComponent,
     EditorComponent,
-    CategoryViewComponent
+    CategoryViewComponent,
+    CommentFormComponent
   ],
   imports: [
     BrowserModule,

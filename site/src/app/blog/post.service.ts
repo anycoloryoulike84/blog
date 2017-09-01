@@ -6,6 +6,7 @@ import {isNull} from 'util';
 import {AuthService} from '../user/auth.service';
 import {User} from '../user/user';
 import {Category} from '../blog/category.model';
+import {Comment} from "./comment/comment"
 
 
 
@@ -82,9 +83,19 @@ export class PostService {
     }
 
 
-  	getPost(id: string): Observable<Post>{
+    addComment(comment: Comment): Observable<any> {
 
-  		let url = "http://0.0.0.0:3000/api/posts/" + id;
+      let url = "http://0.0.0.0:3000/api/posts/" + comment.postId + "/comments";
+
+      return this.http.post(url, comment, {headers: this.headers}).map(res => res.json()).catch(err => Observable.throw(err));
+
+    }
+
+
+  	getPost(id: string, filter?: string): Observable<Post>{
+
+  		let url = "http://0.0.0.0:3000/api/posts/" + id + "?filter=" + filter;
+
   		return this.http.get(url, {headers: this.headers}).map(res => res.json() as Post).catch(err => {
   			
   			return Observable.throw(err)
@@ -123,9 +134,6 @@ export class PostService {
 
 
     }
-
-
-
 
 
 
