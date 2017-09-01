@@ -15,11 +15,11 @@
 	<article *ngFor="let post of posts" class="user-blog-post post">
 
 
-		<h2>{{post.title}}</h2> 
+		<a routerLink="/blog/{{post.id}}"><h2>{{post.title}}</h2> </a>
 				<div class="meta">
 			<span>Author: {{post.account.username}}</span>
 		</div>
-		<div  class="post-body" [innerHTML]="post.body"></div>
+		<div class="post-body" [innerHTML]="post.body"></div>
 
 	</article>
 

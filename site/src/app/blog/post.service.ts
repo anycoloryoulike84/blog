@@ -4,9 +4,8 @@ import {Observable} from 'rxjs';
 import {Post} from './blog/post';
 import {isNull} from 'util';
 import {AuthService} from '../user/auth.service';
-import { User } from '../user/user';
+import {User} from '../user/user';
 import {Category} from '../blog/category.model';
-
 
 
 
@@ -106,9 +105,9 @@ export class PostService {
 
 
 
-    getCategoryById(id: string): Observable<Category> {
+    getCategoryById(id: string, filter?: string): Observable<Category> {
 
-     let url = "http://0.0.0.0:3000/api/categories/" + id;
+     let url = "http://0.0.0.0:3000/api/categories/" + id + "?filter=" + filter;
 
      return this.http.get(url, {headers: this.headers}).map(res => res.json() as Category[]).catch(err => Observable.throw(err));
 

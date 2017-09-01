@@ -25,6 +25,11 @@
       "type": "belongsTo",
       "model": "category",
       "foreignKey": ""
+    },
+    "comments": {
+      "type": "hasMany",
+      "model": "comment",
+      "foreignKey": ""
     }
   },
   "acls": [

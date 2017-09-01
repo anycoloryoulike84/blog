@@ -18,7 +18,7 @@ export class CategoryViewComponent implements OnInit {
 
 	category: Category = new Category();
 
-  constructor (
+  constructor (  
 
   	private route: ActivatedRoute,
   	private postService: PostService
@@ -28,23 +28,23 @@ export class CategoryViewComponent implements OnInit {
   ngOnInit() {
 
   	let categoryId = this.route.snapshot.params["id"];
+    
+    let query = {
+      include: ["posts"]
+    };
 
-  	this.postService.getCategoryById(categoryId).subscribe(res => {
+    let filter = encodeURI(JSON.stringify(query));
+
+  	this.postService.getCategoryById(categoryId, filter).subscribe(res => {
 
   		this.category = res;
+      
+      this.posts = res.posts;
 
   	});
 
 
-  	this.postService.getPostByCategoryId(categoryId).subscribe(res => {
 
-  		this.posts = res;
-
-  	}, err => {
-
-  		console.log(err);
-
-  	});
 
   }
 
