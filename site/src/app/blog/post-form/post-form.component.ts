@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Post} from '../blog/post';
 import {PostService} from '../post.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import post = http.post;
 import {Observable} from "rxjs";
 import {Category} from '../category.model';
 
@@ -15,10 +16,12 @@ import {Category} from '../category.model';
 export class PostFormComponent implements OnInit {
 
 	post: Post = new Post();
+
 	errorMessage = "";
-  successMessage = "";
 	loading = false;
+
   defaultBodyValue: string = "";
+
   categories: Category[] = [];
 
   constructor(
@@ -49,6 +52,7 @@ export class PostFormComponent implements OnInit {
 
        this.loading = false;
        this.post = res as Post;
+
        this.defaultBodyValue = this.post.body;
 
     }, err => {
@@ -63,12 +67,10 @@ export class PostFormComponent implements OnInit {
 
 
     }, err => {
+
       console.log(err)
+
     });
-
-
-
-
 
 
   }
@@ -82,13 +84,14 @@ export class PostFormComponent implements OnInit {
 
   		this.postService.updatePost(this.post).subscribe(res => {
 		  this.router.navigate(['/blog', this.post.id]);
-      this.successMessage = "Blog Post Submitted"
+      
+
 
   		}, err => {
 
   				console.log(err)
   				this.errorMessage = "Error in saving the post"
-          this.successMessage = "Blog Post Submitted"
+
   		})
 
   	} else {
@@ -110,7 +113,7 @@ export class PostFormComponent implements OnInit {
   	}, err => {
   		console.log(err);
   		this.errorMessage = "An error occured in saving the post";
-      this.successMessage = "Blog Post Submitted";
+
   	})
 
   }

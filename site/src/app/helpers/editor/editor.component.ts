@@ -15,7 +15,7 @@ export class EditorComponent implements OnInit, AfterViewInit, OnDestroy, OnChan
  
 
   @Input() elementId: string;
-  @Input() value: string;
+  @Input() value: any = "";
   @Output() onEditorKeyup: EventEmitter<any> = new EventEmitter<any>();
 
   baseURL: string = '/';

@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Http, Headers} from '@angular/http';
 import {Observable} from 'rxjs';
 import {Post} from './blog/post';
 import {isNull} from 'util';
 import {AuthService} from '../user/auth.service';
 import {User} from '../user/user';
-import {Category} from '../blog/category.model';
+import {Category} from './category.model';
 import {Comment} from "./comment/comment"
 
 
@@ -43,16 +43,13 @@ export class PostService {
   		
   		 let url = "http://0.0.0.0:3000/api/posts";
 
-      
       if (!isNull(filter) && filter !== "") {
-
-         url = url + "?filter=" + filter;
-
+         url = url + '?filter=' + filter;
       }
 
-  		return this.http.get(url, {headers: this.headers}).map( res => res.json() ).catch(err => {
+  		return this.http.get(url, {headers: this.headers}).map(res => res.json()).catch(err => {
   			
-  			return Observable.throw(err)
+  			return Observable.throw(err);
   		
   		});
 
@@ -74,7 +71,7 @@ export class PostService {
       
       let url = "http://0.0.0.0:3000/api/posts?filter=" + filter ;
 
-      return this.http.get(url, {headers: this.headers}).map( res => res.json() ).catch(err => {
+      return this.http.get(url, {headers: this.headers}).map(res => res.json()).catch(err => {
         
         return Observable.throw(err)
       
@@ -94,8 +91,12 @@ export class PostService {
 
   	getPost(id: string, filter?: string): Observable<Post>{
 
-  		let url = "http://0.0.0.0:3000/api/posts/" + id + "?filter=" + filter;
+  		let url = "http://0.0.0.0:3000/api/posts/" + id;
 
+      if(filter){
+      url = url + "?filter=" + filter;
+    }
+    
   		return this.http.get(url, {headers: this.headers}).map(res => res.json() as Post).catch(err => {
   			
   			return Observable.throw(err)
@@ -103,6 +104,13 @@ export class PostService {
   		});
 
   	}
+
+
+
+
+
+
+
 
 
 
@@ -164,9 +172,10 @@ export class PostService {
 
     createPost(post: Post): Observable<any> {
 
+      this.updateHeaders();
+
       let user = this.authService.getCurrentUser() as User;
       let userId = user.id;
-
       let url = "http://0.0.0.0:3000/api/accounts/" + userId + "/posts";
 
       return this.http.post(url, post, { headers: this.headers}).map( res => res.json() ).catch(err => {
@@ -182,11 +191,7 @@ export class PostService {
 
        this.updateHeaders();
 
-      let user = this.authService.getCurrentUser() as User;
-      let userId = user.id;
-
-      let url = "http://0.0.0.0:3000/api/accounts/" + userId + "/posts/" + post.id;
-
+      let url = "http://0.0.0.0:3000/api/posts/" + post.id;
       return this.http.put(url, post, { headers: this.headers}).map( res => res.json() ).catch(err => {
         return Observable.throw(err);
 
@@ -197,6 +202,8 @@ export class PostService {
 
 
 }
+
+
 
 
  
