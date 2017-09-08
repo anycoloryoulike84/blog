@@ -1,0 +1,33 @@
+{
+  "name": "individual",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "individualType": {
+      "type": "string"
+    },
+    "individualSubType": {
+      "type": "string"
+    },
+    "memberType": {
+      "type": "string",
+      "default": "memberSubType"
+    },
+    "gender": {
+      "type": "string"
+    },
+    "hireDate": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
